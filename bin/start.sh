@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 
+root_path=/Users/titan/repository/lol
+
 ps -fe|grep nginx |grep -v grep
 if [ $? -ne 0 ]
 then
-  sudo /export/servers/openresty/nginx/sbin/nginx  -t -c /export/App/nginx-app/config/nginx.conf
-  sudo /export/servers/openresty/nginx/sbin/nginx  -c /export/App/nginx-app/config/nginx.conf
+  sudo nginx  -t -c ${root_path}/config/nginx.conf
+  sudo nginx  -c ${root_path}/config/nginx.conf
   echo "nginx start"
 else
-  sudo /export/servers/openresty/nginx/sbin/nginx  -t -c /export/App/nginx-app/config/nginx.conf
-  sudo /export/servers/openresty/nginx/sbin/nginx  -s reload -c /export/App/nginx-app/config/nginx.conf
+  sudo nginx  -t -c ${root_path}/config/nginx.conf
+  sudo nginx  -s reload -c ${root_path}/config/nginx.conf
   echo "nginx reload"
 fi
 echo -e "===========================================\n\n"
-tail -f /export/servers/openresty/nginx/logs/error.log
+tail -f /usr/local/nginx/logs/error.log

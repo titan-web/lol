@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-sudo /export/servers/openresty/nginx/sbin/nginx  -t -c /export/App/nginx-app/config/nginx.conf
-sudo /export/servers/openresty/nginx/sbin/nginx  -s quit -c /export/App/nginx-app/config/nginx.conf
+root_path=/Users/titan/repository/lol
+
+sudo nginx  -t -c ${root_path}/config/nginx.conf
+sudo nginx  -s quit -c ${root_path}/config/nginx.conf
 
 echo "nginx stop"
 echo -e "===========================================\n\n"
-tail -f /export/servers/openresty/nginx/logs/error.log
+tail -f /usr/local/nginx/logs/error.log
