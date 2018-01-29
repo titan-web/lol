@@ -2,9 +2,11 @@
 
 root_path=/Users/titan/repository/lol
 
-sudo nginx  -t -c ${root_path}/config/nginx.conf
-sudo nginx  -s quit -c ${root_path}/config/nginx.conf
+mkdir -p ${root_path}/logs
+
+sudo nginx  -t -p ${root_path} -c ${root_path}/config/nginx.conf
+sudo nginx  -s quit -p ${root_path} -c ${root_path}/config/nginx.conf
 
 echo "nginx stop"
 echo -e "===========================================\n\n"
-tail -f /usr/local/nginx/logs/error.log
+tail -f ${root_path}/logs/error.log
