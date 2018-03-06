@@ -17,7 +17,7 @@ end
 
 ngx.say("----", "</br>")
 
-ngx.say("post:")
+ngx.say("post:", "</br>")
 ngx.req.read_body()
 local post_args = ngx.req.get_post_args()
 for k, v in pairs(post_args) do
@@ -26,4 +26,20 @@ for k, v in pairs(post_args) do
     else
         ngx.say(k, ": ", v, "<br/>")
     end
+end
+
+ngx.say("----", "</br>")
+
+ngx.say("request header:", "</br>")
+local h = ngx.req.get_headers()
+for k, v in pairs(h) do
+    ngx.say(k, ": ", v, "<br/>")
+end
+
+ngx.say("----", "</br>")
+
+ngx.say("response header:", "</br>")
+local h = ngx.resp.get_headers()
+for k, v in pairs(h) do
+    ngx.say(k, ": ", v, "<br/>")
 end
